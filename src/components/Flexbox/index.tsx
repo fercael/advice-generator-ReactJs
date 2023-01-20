@@ -9,9 +9,14 @@ const Flexbox: React.FC<IFlexbox> = ({
   align,
   gap = '2rem',
   width = '100%',
-  height = '1rem'
+  height = '1rem',
+  children
 }) => {
-  return <Wrapper direction={direction} justify={justify} align={align} gap={gap} width={width} height={height} />;
+  return (
+    <Wrapper direction={direction} justify={justify} align={align} gap={gap} width={width} height={height}>
+      {children}
+    </Wrapper>
+  )
 }
 
 export default Flexbox;
