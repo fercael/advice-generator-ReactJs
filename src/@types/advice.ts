@@ -1,5 +1,5 @@
-export type advice = {
-  slip: {
+export type AdviceProps = {
+  slip:{
     id: number,
     advice: string
   }

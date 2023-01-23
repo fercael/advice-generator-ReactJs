@@ -5,6 +5,10 @@ export const Container = styled.section`
   border: 4px solid var(--blue);
   border-radius: 8px;
   padding: 2rem;
+
+  @media( max-width: 768px){
+    width: 375px;
+  }
 `;
 
 export const AdviceTitle = styled.h1`
@@ -34,4 +38,8 @@ export const GenerateAdviceButton = styled.button`
     cursor: pointer;
     background: var(--light-blue);
   }
+  @media( max-width: 768px){
+    width: 100%;
+  }
+
 `;

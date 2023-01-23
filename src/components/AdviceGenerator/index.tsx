@@ -1,27 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { generateAdvice } from '../../functions';
+import { AdviceProps } from '../../@types/advice';
 import Flexbox from '../Flexbox';
 
 import { AdviceText, AdviceTitle, Container, GenerateAdviceButton } from './styles';
 
 const AdviceGenerator: React.FC = () => {
-  const [ title, setTitle ] = useState('000')
-  const [ advice, setAdvice ] = useState('undefined')
+  const [advice, setAdvice] = useState<AdviceProps | null >(null);
 
+  const findAdvice = () => {
+    fetch('https://api.adviceslip.com/advice')
+    .then(data => data.json())
+    .then(obj => setAdvice(obj))
+  }
   useEffect(() => {
-    
+    findAdvice()
   }, [])
   
   return (
     <Container>
       <Flexbox direction='column' align='center' gap='2rem'>
         <AdviceTitle>
-          {`Advice #${title}`}
+          {`Advice #${advice?.slip.id}`}
         </AdviceTitle>
         <AdviceText>
-          {`${advice}`}
+          {`"${advice?.slip.advice}"`}
         </AdviceText>
-        <GenerateAdviceButton>Find Advice</GenerateAdviceButton>
+        <GenerateAdviceButton onClick={e => findAdvice()}>Find Advice</GenerateAdviceButton>
       </Flexbox>
     </Container>
   );

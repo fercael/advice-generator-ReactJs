@@ -8,7 +8,8 @@ export default createGlobalStyle`
   }
   html, body{
     display: flex;
-    justify-items: center;
+    width: 100vw;
+    justify-content: center;
     align-items: center;
   }
 
